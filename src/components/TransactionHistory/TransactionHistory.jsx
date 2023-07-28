@@ -1,36 +1,26 @@
-import PropTypes from 'prop-types';
-import {TransactionHistoryTable, TableHead, TableHeadList, TableHeadListItem, TableBody, TableBodyList, TableBodyItem} from './TransactionHistory.styled'
-
-export default function TransactionHistory({ items }) {
+import styles from './TransactionHistory.module.css'
+const TransactionHistory = ({ transactions }) => {
     return (
-        <TransactionHistoryTable>
-            <TableHead>
-                <TableHeadList>
-                    <TableHeadListItem>Type</TableHeadListItem>
-                    <TableHeadListItem>Amount</TableHeadListItem>
-                    <TableHeadListItem>Currency</TableHeadListItem>
-                </TableHeadList>
-            </TableHead>
-            <TableBody>
-                {items.map(({ id, type, amount, currency}) => (
-                    <TableBodyList key={id}>
-                        <TableBodyItem>{type}</TableBodyItem>
-                        <TableBodyItem>{amount}</TableBodyItem>
-                        <TableBodyItem>{currency}</TableBodyItem>
-                    </TableBodyList>
-                ))}
-            </TableBody>
-        </TransactionHistoryTable>
-    );
-};
+     <table className={styles.transaction_history}>
+  <thead>
+    <tr className={styles.table}>
+      <th className={styles.title}>Type</th>
+      <th className={styles.title}>Amount</th>
+      <th className={styles.title}>Currency</th>
+    </tr>
+  </thead>
 
-TransactionHistory.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.exact({
-        id: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        amount: PropTypes.string.isRequired,
-        currency: PropTypes.string.isRequired,
-    }),
-  ),
-};
+  <tbody>
+    {transactions.map(({ id, type, amount, currency }) => (
+         <tr key={id}>
+      <td className={styles.table_body}>{type}</td>
+      <td className={styles.table_body}>{amount}</td>
+      <td className={styles.table_body}>{currency}</td>
+    </tr>
+    )
+    )}
+  </tbody>
+</table>
+    )
+}
+export default TransactionHistory

@@ -1,0 +1,17 @@
+ .transaction_history{
+width: 500px;
+    margin-top: 50px;
+ }
+ .table{
+    background-color: #01bcd5;
+        color: white;
+ }
+ .title{
+    height: 40px;
+        text-align: center;
+
+ }
+ .table_body{
+        height: 40px;
+            text-align: center;
+ }

@@ -1,0 +1,39 @@
+.friend_list{
+
+    margin-top: 50px;
+    max-width: 300px;
+}
+
+.item{
+    display: flex;
+        align-items: center;
+        width: 200px;
+        height: 60px;
+        background-color: white;
+        
+        gap: 10px;
+        padding: 5px 15px;
+}
+.status{
+    font-size: 18;
+        line-height: 1.2;
+        margin: 0;
+}
+.status.green{
+    color: green;
+    /* background-color: green; */
+}
+.status.red {
+    /* background-color: red; */
+    color: red;
+}
+.avatar{
+    height: 50px;
+}
+.name{}
+.green{
+    color: green;
+}
+.red{
+    color: red;
+}

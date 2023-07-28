@@ -1,30 +1,20 @@
-import PropTypes from 'prop-types';
-import {StatisticsCard, Title, StatList, StatListItem, Label, Percentage} from './Statistics.styled'
-import color from './getRandomHexColor';
+import styles from './Statistics.module.css'
+const Statistics = ({data, title}) => {
+    
+    return (
+        <section className={styles.statistics}>
+            
+              {title && <h2 className={styles.title}>{title}</h2>}
 
-export default function Statistics({ stats, title }) {
-  return (
-    <StatisticsCard>
-        {title && <Title>{title}</Title>}
-        <StatList>
-            {stats.map(({id, label, percentage}) => (
-                <StatListItem key={id} style={{ backgroundColor: color() }}>
-                    <Label>{ label }</Label>
-                    <Percentage>{percentage}</Percentage>
-                </StatListItem>
-            ))}  
-        </StatList>
-    </StatisticsCard>
-  );
-};
-
-Statistics.propTypes = {
-  title: PropTypes.string,
-  stats: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-      percentage: PropTypes.number.isRequired,
-    }),
-  ),
-};
+            <ul className={styles.stat_list}>
+                {data.map(({ id, label, percentage }) => (
+          <li className={styles.item} key={id}>
+            <span className={styles.label}>{label} </span>
+            <span className={styles.percentage}>{percentage}%</span>
+          </li>
+        ))}
+                </ul>
+        </section>
+    );
+}
+export default Statistics;

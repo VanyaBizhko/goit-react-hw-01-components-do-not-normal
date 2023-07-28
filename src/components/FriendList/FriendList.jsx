@@ -1,28 +1,18 @@
-import { IoEllipseSharp } from 'react-icons/io5';
-import PropTypes from 'prop-types';
-import {FriendsList, FriendListItem, Status, Avatar, Name} from './FriendList.styled'
-
-export default function FriendList({ friends }) {
+import styles from './FriendList.module.css'
+const FriendList = ({ friends }) => {
     return (
-        <FriendsList>
-            {friends.map(({ id, avatar, name, isOnline }) => (
-                <FriendListItem key={id}>
-                    <Status><IoEllipseSharp style={{ color: isOnline ? 'green' : 'red' }}/></Status>
-                    <Avatar src={avatar} alt='avatar' />
-                    <Name>{name}</Name>
-                </FriendListItem>
-            ))}
-        </FriendsList>
-    );
-};
-
-FriendsList.propTypes = {
-  friends: PropTypes.arrayOf(
-    PropTypes.exact({
-        id: PropTypes.number.isRequired,
-        avatar: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        isOnline: PropTypes.bool.isRequired,
-    }),
-  ),
-};
+        <ul className={styles.friend_list}>
+            {friends.map(( {name, avatar, id, isOnline} ) => (
+            <li className={styles.item} key={id}>
+                <span className={`${styles.status} ${isOnline ? styles.green : styles.red}`}>
+            {isOnline ? "Online" : "Offline"}
+          </span>
+                <img className={styles.avatar} src={avatar} alt="User avatar" width="48" />
+                <p className={styles.name}>{name}</p>
+            </li>
+            ))
+            }
+        </ul>
+    )
+}
+export default FriendList
